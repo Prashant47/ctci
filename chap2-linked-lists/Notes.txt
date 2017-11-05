@@ -1,0 +1,67 @@
+1.Remove duplicates in unsorted linked list
+Ans a) without extra buffer inplace, iterate list for each element O(n^2)
+    b) store is hashmap or dict O(n)
+    c) use sorting and then remove the duplicates in sorted list O(nlogn) + O(n)
+
+2. Get kth to last element in linked list.
+Ans. a) if size is known then just print (n - k)th element from starting.
+     b) recursive solution:-  first try recursive function for finding length of linked list
+	such that length is measured from end adding 1 per each node.
+
+	int printKthLastNode( list l, int k) {
+		if l == null
+			return 0
+		int index = printKthLastNode(l->next, k) + 1
+		if (index == k )
+			print the value of node
+		return index
+    
+    c) iterative solution :- take two pointers p1 and p2 k nodes apart to each other,
+	then move them at unit node speed until p1 reach to end.
+
+variant:- delete kth element in list
+
+3. Delete the middle node when head is not given and only access to that node is given.
+Ans. a) just copy the value of next node to current node and next of current node should
+	point out to next of next node.
+	handling end node => mark it as dummy
+
+4. Partition linked list around given values such that all lesser values come first to left 
+then all greater values after that.
+Ans. 1) create two lists one less than pivot element and other greater than pivot element.
+	** create list just rearranging the elements of original list only.
+	=>while iterating copy pointer to next node in temp pointer and move the current node to desired list <=
+
+5. Sum of two lists ( 7-> 1 -> 6) + (5 -> 9 -> 2) = 9 -> 1 -> 2 617 + 295 = 912
+reverse iteration also
+Ans.  key => addition should start lsb and carry should be propagates towards msb
+	1. reversal case (above) start addition from left to right also propagate carry same way.
+	2. opposite of above case start adding left to right but carry propagate from right to left, needs recursive solution for this.
+
+6. Linked list is palindrome or not 
+Ans. a) create a reverse linked list and compare first half of the both lists.
+	you can reverse and clone in single pass.
+     b) Iterative approach: push first half of linked list in array and then compare with remaining half
+	How to find half of linked list ? 1. if size of linked list is known then trivial 
+					  2. if size is not known then iterate list through slow and fast runner
+					   when faster runner is at the end of list slow runner will be at the middle.
+     c) Recursive solution :- didn't understand
+
+     d) O(n) time and O(1) space solution :- leetcode 234
+
+7.Finding intersection node of two linked list
+Ans. a) If two lists are intersecting then their last node would be the node. this can be check point weather they are intersecting or not.
+        key => If two lists are of same length then just we can find intersecting node just by traversing one node at time &
+	checking weather both nodes are the same.
+	For lists with diff length just calculate the length of each node and ignore the additional nodes in largest list and start 
+	as with two lists having equal nodes using key above.
+
+
+8. Loop Detection in Linked list
+Ans.   keys => distance of collision point from start point of loop = distance of start point of loop from head
+	    => when slow enters loop fast is already k steps away from slow
+	Steps:
+	1. create two pointer fast and slow
+	2. move fast one 2 steps and slow 1 step each time
+	3. when they collide move slow to head and keep fast where it is
+	4. Not move slow and fast pointer one step each and return the pointer when they collide
