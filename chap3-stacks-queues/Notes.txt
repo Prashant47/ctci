@@ -1,1 +1,11 @@
 1. Implement 3 stacks using single array
+
+
+2. Design stack supporting min operation in O(1) time
+Ans Challenge we can keep min element in stack but when min is popped out we have to find next min in stack
+	a) Along with every element in stack put a min element new NodeWithMin(value, newMin)	
+		this waste lot of space
+	b) Maintain another stack with min elements, previously you maintain each element with min element now 
+	keep only some minimal elements. You will add in min stack if and only if the new element is smaller than min element.
+	
+3. Stack of plates 
